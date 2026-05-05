@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AmazonWorld | Database View</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    /* Table styles imported from the original DB console */
+    table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+    th, td { border: 1px solid #e5e7eb; padding: 0.45rem; text-align: left; vertical-align: top; }
+    th { background: #eef2ff; }
+    .table-container { overflow-x: auto; margin-top: 0.8rem; }
+    
+    /* Ensure the hidden class works correctly for the modal */
+    .hidden { display: none !important; }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="topbar">
+      <div class="brand">Amazon<span>World</span></div>
+      <nav class="nav">
+        <a href="home.html">Home</a>
+        <a href="record.html">Record</a>
+        <a href="start.html">Start</a>
+        <a href="contact.html">Contact</a>
+        <a href="profile-dashboard.html">Profile</a>
+        <a class="active" href="database-view.html">Database</a>
+        <span class="badge">Cart: <span id="cartCount">0</span></span>
+        <button id="logoutBtn" class="btn small danger">Logout</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <h1>Website Database Overview</h1>
+      <p>Full view of users, products, transactions, and wallets directly on the frontend.</p>
+    </section>
+
+    <!-- Users Table -->
+    <section class="panel">
+      <h2>Users + Wallets</h2>
+      <div class="table-container">
+        <table id="usersTable">
+          <thead>
+            <tr>
+              <th>ID</th><th>Name</th><th>Email</th><th>Phone</th><th>Status</th><th>Admin</th>
+              <th>Balance USDT</th><th>Profit USDT</th><th>Credit Score</th><th>Actions</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Products Table -->
+    <section class="panel">
+      <h2>Products Database</h2>
+      <div class="table-container">
+        <table id="productsTable">
+          <thead>
+            <tr>
+              <th>ID</th><th>Name</th><th>Description</th><th>Price USDT</th><th>Image</th><th>Mode</th><th>Actions</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Bought Products Table -->
+    <section class="panel">
+      <h2>Bought Products History</h2>
+      <div class="table-container">
+        <table id="boughtTable">
+          <thead>
+            <tr>
+              <th>ID</th><th>User</th><th>Product</th><th>Buy Price</th><th>Mode</th><th>Bought At</th><th>Actions</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Withdraw Requests Table -->
+    <section class="panel">
+      <h2>Withdraw Requests</h2>
+      <div class="table-container">
+        <table id="withdrawTable">
+          <thead>
+            <tr>
+              <th>ID</th><th>User</th><th>Amount</th><th>Address</th><th>Network</th><th>Status</th><th>Action</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Transactions Table -->
+    <section class="panel">
+      <h2>Transactions Log</h2>
+      <div class="table-container">
+        <table id="txTable">
+          <thead>
+            <tr>
+              <th>ID</th><th>User</th><th>Type</th><th>Product ID</th><th>Amount</th><th>My Comm</th><th>Platform Comm</th><th>Net Impact</th><th>Time</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <!-- Admin: Edit User Modal -->
+  <div id="editUserModal" class="modal hidden" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); display: flex; justify-content: center; align-items: center; z-index: 1000;">
+    <div class="modal-content" style="background: #fff; padding: 2rem; border-radius: 12px; width: 100%; max-width: 500px; max-height: 90vh; overflow-y: auto;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+        <h3 style="margin: 0;">Edit User Details</h3>
+        <button id="closeEditModal" class="btn small" style="background: #eee; border: none; cursor: pointer; padding: 0.5rem 1rem; border-radius: 4px;">Close</button>
+      </div>
+      
+      <form id="editUserForm" style="display: flex; flex-direction: column; gap: 0.8rem;">
+        <input type="hidden" id="editUserId" />
+        
+        <label><strong>Full Name</strong>
+          <input id="editUserName" class="input" type="text" style="width: 100%; box-sizing: border-box; padding: 0.5rem;" />
+        </label>
+        
+        <label><strong>Email Address</strong>
+          <input id="editUserEmail" class="input" type="email" style="width: 100%; box-sizing: border-box; padding: 0.5rem;" />
+        </label>
+
+        <label><strong>Phone Number</strong>
+          <input id="editUserPhone" class="input" type="tel" style="width: 100%; box-sizing: border-box; padding: 0.5rem;" />
+        </label>
+
+        <label><strong>Change Password</strong> <span class="muted" style="font-size: 0.8rem; color: #6b7280;">(Leave blank to keep current)</span>
+          <input id="editUserPassword" class="input" type="text" placeholder="Enter new password to override" style="width: 100%; box-sizing: border-box; padding: 0.5rem;" />
+        </label>
+
+        <label><strong>Account Status</strong>
+          <select id="editUserStatus" class="input" style="width: 100%; box-sizing: border-box; padding: 0.5rem;">
+            <option value="active">Active</option>
+            <option value="frozen">Frozen (Cannot withdraw/buy)</option>
+            <option value="blocked">Blocked (Cannot login)</option>
+          </select>
+        </label>
+
+        <div style="display: flex; gap: 1rem;">
+          <label style="flex: 1;"><strong>Balance (USDT)</strong>
+            <input id="editUserBalance" class="input" type="number" step="0.01" style="width: 100%; box-sizing: border-box; padding: 0.5rem;" />
+          </label>
+          <label style="flex: 1;"><strong>Profit (USDT)</strong>
+            <input id="editUserProfit" class="input" type="number" step="0.01" style="width: 100%; box-sizing: border-box; padding: 0.5rem;" />
+          </label>
+        </div>
+
+        <div style="margin-top: 1rem; display: flex; justify-content: space-between;">
+          <button type="button" id="deleteUserBtn" class="btn danger" style="background: #dc2626; color: white; border: none; padding: 0.5rem 1rem; border-radius: 4px; cursor: pointer;">Remove User</button>
+          <button type="submit" class="btn primary" style="padding: 0.5rem 1rem; border-radius: 4px; cursor: pointer;">Save All Changes</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Main Website App Script (Handles navbar, routing, etc.) -->
+  <!-- <script src="js/app.js"></script> -->
+  
+  <!-- Original Database Console Script (Handles fetching the tables) -->
+  <script src="js/db-owner-console.js"></script>
+
+  <!-- New Script specifically for the Edit Modal inside this page -->
+  <script>
+    const editUserModal = document.getElementById('editUserModal');
+    const closeEditModal = document.getElementById('closeEditModal');
+    const editUserForm = document.getElementById('editUserForm');
+    const deleteUserBtn = document.getElementById('deleteUserBtn');
+
+    // Close modal function
+    closeEditModal.addEventListener('click', () => {
+        editUserModal.classList.add('hidden');
+    });
+
+    // Open Modal Function (Trigger this from your Users table logic)
+    window.openUserEditor = function(user) {
+        document.getElementById('editUserId').value = user.id || "";
+        document.getElementById('editUserName').value = user.name || "";
+        document.getElementById('editUserEmail').value = user.email || "";
+        document.getElementById('editUserPhone').value = user.phone || "";
+        document.getElementById('editUserStatus').value = user.status || "active";
+        document.getElementById('editUserBalance').value = user.balance || 0;
+        document.getElementById('editUserProfit').value = user.profit || 0;
+        document.getElementById('editUserPassword').value = ""; // Keep blank for security
+
+        editUserModal.classList.remove('hidden');
+    };
+
+    // Save Changes via PHP Backend
+    editUserForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const updatedUserData = {
+            id: document.getElementById('editUserId').value,
+            name: document.getElementById('editUserName').value,
+            email: document.getElementById('editUserEmail').value,
+            phone: document.getElementById('editUserPhone').value,
+            status: document.getElementById('editUserStatus').value,
+            balance: document.getElementById('editUserBalance').value,
+            profit: document.getElementById('editUserProfit').value,
+            newPassword: document.getElementById('editUserPassword').value 
+        };
+
+        // Send data to your PHP backend to update the database
+        // UPDATE 'api/update_user.php' to the actual path of your backend file
+        fetch('api/update_user.php', { 
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(updatedUserData)
+        })
+        .then(response => response.json())
+        .then(data => {
+            if(data.success) {
+                alert("User updated successfully! Changes are live.");
+                editUserModal.classList.add('hidden');
+                // You should call your table refresh function here (e.g., loadUsers())
+            } else {
+                alert("Error updating user: " + (data.message || "Unknown error"));
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert("Network error or backend file not found.");
+        });
+    });
+
+    // Remove User via PHP Backend
+    deleteUserBtn.addEventListener('click', function() {
+        const userId = document.getElementById('editUserId').value;
+        
+        if(confirm("Are you absolutely sure you want to completely remove this user? This cannot be undone.")) {
+            // UPDATE 'api/delete_user.php' to the actual path of your backend file
+            fetch('api/delete_user.php', { 
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ id: userId })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if(data.success) {
+                    alert("User removed entirely.");
+                    editUserModal.classList.add('hidden');
+                    // You should call your table refresh function here (e.g., loadUsers())
+                } else {
+                     alert("Error removing user: " + (data.message || "Unknown error"));
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert("Network error or backend file not found.");
+            });
+        }
+    });
+  </script>
+</body>
+</html>

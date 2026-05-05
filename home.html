@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AmazonWorld | Home</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body data-auth="required">
+  <header class="site-header">
+    <div class="topbar">
+      <div class="brand">Amazon<span>World</span></div>
+      <nav class="nav">
+        <a class="active" href="home.html">Home</a>
+        <a href="record.html">Record</a>
+        <a href="start.html">Start</a>
+        <a href="contact.html">Contact</a>
+        <a href="profile-dashboard.html">Profile</a>
+        <span class="badge">Cart: <span id="cartCount">0</span></span>
+        <button id="logoutBtn" class="btn small danger">Logout</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <h1>Welcome, <span data-user-name></span></h1>
+      <p>Buy and sell products with instant cart and order records.</p>
+    </section>
+
+    <section class="card">
+      <h2>Buy Commission Products (10)</h2>
+      <p class="muted">These 10 products apply commission on buying only.</p>
+      <div class="grid products">
+        <article class="card">
+          <img class="product-image" src="img/wireless-headphones.jpg" alt="Wireless Headphones" />
+          <h3>Wireless Headphones</h3>
+          <p class="muted">Noise cancellation and 30h battery backup.</p>
+          <p class="price">$59.99</p>
+          <div class="actions">
+            <button class="btn" data-add-cart="1" data-product="Wireless Headphones" data-price="59.99">Add to Cart</button>
+            <button class="btn buy" data-buy="1" data-product="Wireless Headphones" data-price="59.99" data-commission="buy">Buy</button>
+            <button class="btn sell" data-sell="1" data-product="Wireless Headphones" data-price="59.99">Sell</button>
+          </div>
+        </article>
+        <article class="card">
+          <img class="product-image" src="img/smart-watch.jpg" alt="Smart Watch" />
+          <h3>Smart Watch</h3>
+          <p class="muted">Health tracking and waterproof design.</p>
+          <p class="price">$39.50</p>
+          <div class="actions">
+            <button class="btn" data-add-cart="1" data-product="Smart Watch" data-price="39.50">Add to Cart</button>
+            <button class="btn buy" data-buy="1" data-product="Smart Watch" data-price="39.50" data-commission="buy">Buy</button>
+            <button class="btn sell" data-sell="1" data-product="Smart Watch" data-price="39.50">Sell</button>
+          </div>
+        </article>
+        <article class="card">
+          <img class="product-image" src="img/office-chair.jpg" alt="Office Chair" />
+          <h3>Office Chair</h3>
+          <p class="muted">Ergonomic support for long work sessions.</p>
+          <p class="price">$89.00</p>
+          <div class="actions">
+            <button class="btn" data-add-cart="1" data-product="Office Chair" data-price="89.00">Add to Cart</button>
+            <button class="btn buy" data-buy="1" data-product="Office Chair" data-price="89.00" data-commission="buy">Buy</button>
+            <button class="btn sell" data-sell="1" data-product="Office Chair" data-price="89.00">Sell</button>
+          </div>
+        </article>
+        <article class="card">
+          <img class="product-image" src="img/android-tablet.jpg" alt="Android Tablet" />
+          <h3>Android Tablet</h3>
+          <p class="muted">10-inch display with long battery.</p>
+          <p class="price">$210.00</p>
+          <div class="actions">
+            <button class="btn" data-add-cart="1" data-product="Android Tablet" data-price="210.00">Add to Cart</button>
+            <button class="btn buy" data-buy="1" data-product="Android Tablet" data-price="210.00" data-commission="buy">Buy</button>
+            <button class="btn sell" data-sell="1" data-product="Android Tablet" data-price="210.00">Sell</button>
+          </div>
+        </article>
+        <article class="card">
+          <img class="product-image" src="img/mechanical-keyboard.jpg" alt="Mechanical Keyboard" />
+          <h3>Mechanical Keyboard</h3>
+          <p class="muted">Hot-swap keys and RGB backlight.</p>
+          <p class="price">$120.00</p>
+          <div class="actions">
+            <button class="btn" data-add-cart="1" data-product="Mechanical Keyboard" data-price="120.00">Add to Cart</button>
+            <button class="btn buy" data-buy="1" data-product="Mechanical Keyboard" data-price="120.00" data-commission="buy">Buy</button>
+            <button class="btn sell" data-sell="1" data-product="Mechanical Keyboard" data-price="120.00">Sell</button>
+          </div>
+        </article>
+        <article class="card">
+          <img class="product-image" src="img/action-camera.jpg" alt="Action Camera" />
+          <h3>Action Camera</h3>
+          <p class="muted">4K recording with stabilization.</p>
+          <p class="price">$280.00</p>
+          <div class="actions">
+            <button class="btn" data-add-cart="1" data-product="Action Camera" data-price="280.00">Add to Cart</button>
+            <button class="btn buy" data-buy="1" data-product="Action Camera" data-price="280.00" data-commission="buy">Buy</button>
+            <button class="btn sell" data-sell="1" data-product="Action Camera" data-price="280.00">Sell</button>
+          </div>
+        </article>
+        <article class="card">
+          <img class="product-image" src="img/wifi-router.jpg" alt="Wi-Fi Router" />
+          <h3>Wi-Fi Router</h3>
+          <p class="muted">Dual-band speed for office and home.</p>
+          <p class="price">$95.00</p>
+          <div class="actions">
+            <button class="btn" data-add-cart="1" data-product="Wi-Fi Router" data-price="95.00">Add to Cart</button>
+            <button class="btn buy" data-buy="1" data-product="Wi-Fi Router" data-price="95.00" data-commission="buy">Buy</button>
+            <button class="btn sell" data-sell="1" data-product="Wi-Fi Router" data-price="95.00">Sell</button>
+          </div>
+        </article>
+        <article class="card">
+          <img class="product-image" src="img/27-inch-monitor.jpg" alt="27 Inch Monitor" />
+          <h3>27 Inch Monitor</h3>
+          <p class="muted">Full HD IPS screen for work and gaming.</p>
+          <p class="price">$260.00</p>
+          <div class="actions">
+            <button class="btn" data-add-cart="1" data-product="27 Inch Monitor" data-price="260.00">Add to Cart</button>
+            <button class="btn buy" data-buy="1" data-product="27 Inch Monitor" data-price="260.00" data-commission="buy">Buy</button>
+            <button class="btn sell" data-sell="1" data-product="27 Inch Monitor" data-price="260.00">Sell</button>
+          </div>
+        </article>
+        <article class="card">
+          <img class="product-image" src="img/laser-printer.jpg" alt="Laser Printer" />
+          <h3>Laser Printer</h3>
+          <p class="muted">Fast black-and-white printing.</p>
+          <p class="price">$720.00</p>
+          <div class="actions">
+            <button class="btn" data-add-cart="1" data-product="Laser Printer" data-price="720.00">Add to Cart</button>
+            <button class="btn buy" data-buy="1" data-product="Laser Printer" data-price="720.00" data-commission="buy">Buy</button>
+            <button class="btn sell" data-sell="1" data-product="Laser Printer" data-price="720.00">Sell</button>
+          </div>
+        </article>
+        <article class="card">
+          <img class="product-image" src="img/mini-drone.jpg" alt="Mini Drone" />
+          <h3>Mini Drone</h3>
+          <p class="muted">Easy control with HD aerial shots.</p>
+          <p class="price">$180.00</p>
+          <div class="actions">
+            <button class="btn" data-add-cart="1" data-product="Mini Drone" data-price="180.00">Add to Cart</button>
+            <button class="btn buy" data-buy="1" data-product="Mini Drone" data-price="180.00" data-commission="buy">Buy</button>
+            <button class="btn sell" data-sell="1" data-product="Mini Drone" data-price="180.00">Sell</button>
+          </div>
+        </article>
+        <article class="card">
+          <img class="product-image" src="img/gaming-laptop-pro.jpg" alt="Gaming Laptop Pro" />
+          <h3>Gaming Laptop Pro</h3>
+          <p class="muted">High performance laptop for gaming and editing.</p>
+          <p class="price">$1499.00</p>
+          <div class="actions">
+            <button class="btn" data-add-cart="1" data-product="Gaming Laptop Pro" data-price="1499.00">Add to Cart</button>
+            <button class="btn buy" data-buy="1" data-product="Gaming Laptop Pro" data-price="1499.00" data-commission="buy">Buy</button>
+            <button class="btn sell" data-sell="1" data-product="Gaming Laptop Pro" data-price="1499.00">Sell</button>
+          </div>
+        </article>
+        <article class="card">
+          <img class="product-image" src="img/flagship-smartphone.jpg" alt="Flagship Smartphone" />
+          <h3>Flagship Smartphone</h3>
+          <p class="muted">Premium phone with pro camera and fast chip.</p>
+          <p class="price">$999.00</p>
+          <div class="actions">
+            <button class="btn" data-add-cart="1" data-product="Flagship Smartphone" data-price="999.00">Add to Cart</button>
+            <button class="btn buy" data-buy="1" data-product="Flagship Smartphone" data-price="999.00" data-commission="buy">Buy</button>
+            <button class="btn sell" data-sell="1" data-product="Flagship Smartphone" data-price="999.00">Sell</button>
+          </div>
+        </article>
+        <article class="card">
+          <img class="product-image" src="img/deluxe-espresso-machine.jpg" alt="Deluxe Espresso Machine" />
+          <h3>Deluxe Espresso Machine</h3>
+          <p class="muted">Barista-style coffee machine for home use.</p>
+          <p class="price">$619.00</p>
+          <div class="actions">
+            <button class="btn" data-add-cart="1" data-product="Deluxe Espresso Machine" data-price="619.00">Add to Cart</button>
+            <button class="btn buy" data-buy="1" data-product="Deluxe Espresso Machine" data-price="619.00" data-commission="buy">Buy</button>
+            <button class="btn sell" data-sell="1" data-product="Deluxe Espresso Machine" data-price="619.00">Sell</button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Sell Commission Products (5) + Buy & Sell Commission Products (5)</h2>
+      <p class="muted">Full product details moved from Start page.</p>
+      <div class="grid products">
+        <article class="card">
+          <img class="product-image" src="img/rice-cooker.jpg" alt="Rice Cooker" />
+          <h3>Rice Cooker</h3>
+          <p class="muted">Sell commission product. Sell Commission: 10%.</p>
+          <p class="price">$70.00</p>
+          <div class="actions">
+            <button class="btn" data-add-cart="1" data-product="Rice Cooker" data-price="70.00">Add to Cart</button>
+            <button class="btn buy" data-buy="1" data-product="Rice Cooker" data-price="70.00" data-commission="sell">Buy</button>
+            <button class="btn sell" data-sell="1" data-product="Rice Cooker" data-price="70.00">Sell</button>
+          </div>
+        </article>
+        <article class="card">
+          <img class="product-image" src="img/robot-vacuum.jpg" alt="Robot Vacuum" />
+          <h3>Robot Vacuum</h3>
+          <p class="muted">Sell commission product. Sell Commission: 10%.</p>
+          <p class="price">$780.00</p>
+          <div class="actions">
+            <button class="btn" data-add-cart="1" data-product="Robot Vacuum" data-price="780.00">Add to Cart</button>
+            <button class="btn buy" data-buy="1" data-product="Robot Vacuum" data-price="780.00" data-commission="sell">Buy</button>
+            <button class="btn sell" data-sell="1" data-product="Robot Vacuum" data-price="780.00">Sell</button>
+          </div>
+        </article>
+        <article class="card">
+          <img class="product-image" src="img/air-fryer.jpg" alt="Air Fryer" />
+          <h3>Air Fryer</h3>
+          <p class="muted">Sell commission product. Sell Commission: 10%.</p>
+          <p class="price">$140.00</p>
+          <div class="actions">
+            <button class="btn" data-add-cart="1" data-product="Air Fryer" data-price="140.00">Add to Cart</button>
+            <button class="btn buy" data-buy="1" data-product="Air Fryer" data-price="140.00" data-commission="sell">Buy</button>
+            <button class="btn sell" data-sell="1" data-product="Air Fryer" data-price="140.00">Sell</button>
+          </div>
+        </article>
+        <article class="card">
+          <img class="product-image" src="img/juicer-blender.jpg" alt="Juicer Blender" />
+          <h3>Juicer Blender</h3>
+          <p class="muted">Sell commission product. Sell Commission: 10%.</p>
+          <p class="price">$110.00</p>
+          <div class="actions">
+            <button class="btn" data-add-cart="1" data-product="Juicer Blender" data-price="110.00">Add to Cart</button>
+            <button class="btn buy" data-buy="1" data-product="Juicer Blender" data-price="110.00" data-commission="sell">Buy</button>
+            <button class="btn sell" data-sell="1" data-product="Juicer Blender" data-price="110.00">Sell</button>
+          </div>
+        </article>
+        <article class="card">
+          <img class="product-image" src="img/microwave-oven.jpg" alt="Microwave Oven" />
+          <h3>Microwave Oven</h3>
+          <p class="muted">Sell commission product. Sell Commission: 10%.</p>
+          <p class="price">$950.00</p>
+          <div class="actions">
+            <button class="btn" data-add-cart="1" data-product="Microwave Oven" data-price="950.00">Add to Cart</button>
+            <button class="btn buy" data-buy="1" data-product="Microwave Oven" data-price="950.00" data-commission="sell">Buy</button>
+            <button class="btn sell" data-sell="1" data-product="Microwave Oven" data-price="950.00">Sell</button>
+          </div>
+        </article>
+        <article class="card">
+          <img class="product-image" src="img/game-console.jpg" alt="Game Console" />
+          <h3>Game Console</h3>
+          <p class="muted">Buy & sell commission product.</p>
+          <p class="price">$799.00</p>
+          <div class="actions">
+            <button class="btn" data-add-cart="1" data-product="Game Console" data-price="799.00">Add to Cart</button>
+            <button class="btn buy" data-buy="1" data-product="Game Console" data-price="799.00" data-commission="both">Buy</button>
+            <button class="btn sell" data-sell="1" data-product="Game Console" data-price="799.00">Sell</button>
+          </div>
+        </article>
+        <article class="card">
+          <img class="product-image" src="img/ultrabook-laptop.jpg" alt="Ultrabook Laptop" />
+          <h3>Ultrabook Laptop</h3>
+          <p class="muted">Buy & sell commission product.</p>
+          <p class="price">$1299.00</p>
+          <div class="actions">
+            <button class="btn" data-add-cart="1" data-product="Ultrabook Laptop" data-price="1299.00">Add to Cart</button>
+            <button class="btn buy" data-buy="1" data-product="Ultrabook Laptop" data-price="1299.00" data-commission="both">Buy</button>
+            <button class="btn sell" data-sell="1" data-product="Ultrabook Laptop" data-price="1299.00">Sell</button>
+          </div>
+        </article>
+        <article class="card">
+          <img class="product-image" src="img/water-cooler.jpg" alt="Water Cooler" />
+          <h3>Water Cooler</h3>
+          <p class="muted">Buy & sell commission product.</p>
+          <p class="price">$290.00</p>
+          <div class="actions">
+            <button class="btn" data-add-cart="1" data-product="Water Cooler" data-price="290.00">Add to Cart</button>
+            <button class="btn buy" data-buy="1" data-product="Water Cooler" data-price="290.00" data-commission="both">Buy</button>
+            <button class="btn sell" data-sell="1" data-product="Water Cooler" data-price="290.00">Sell</button>
+          </div>
+        </article>
+        <article class="card">
+          <img class="product-image" src="img/smart-projector.jpg" alt="Smart Projector" />
+          <h3>Smart Projector</h3>
+          <p class="muted">Buy & sell commission product.</p>
+          <p class="price">$890.00</p>
+          <div class="actions">
+            <button class="btn" data-add-cart="1" data-product="Smart Projector" data-price="890.00">Add to Cart</button>
+            <button class="btn buy" data-buy="1" data-product="Smart Projector" data-price="890.00" data-commission="both">Buy</button>
+            <button class="btn sell" data-sell="1" data-product="Smart Projector" data-price="890.00">Sell</button>
+          </div>
+        </article>
+        <article class="card">
+          <img class="product-image" src="img/inverter-ac.jpg" alt="Inverter AC" />
+          <h3>Inverter AC</h3>
+          <p class="muted">Buy & sell commission product.</p>
+          <p class="price">$1450.00</p>
+          <div class="actions">
+            <button class="btn" data-add-cart="1" data-product="Inverter AC" data-price="1450.00">Add to Cart</button>
+            <button class="btn buy" data-buy="1" data-product="Inverter AC" data-price="1450.00" data-commission="both">Buy</button>
+            <button class="btn sell" data-sell="1" data-product="Inverter AC" data-price="1450.00">Sell</button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="cart-panel">
+      <h2>Your Cart</h2>
+      <div id="cartList" class="list"></div>
+      <p style="margin-top: 0.8rem;"><strong>Total: $<span id="cartTotal">0.00</span></strong></p>
+      <div class="actions" style="margin-top: 0.8rem;">
+        <button id="clearCartBtn" class="btn danger">Clear Cart</button>
+      </div>
+    </section>
+  </main>
+  <script src="js/app.js"></script>
+</body>
+</html>

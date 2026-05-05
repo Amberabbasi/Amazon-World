@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AmazonWorld DB Owner Console</title>
+  <style>
+    body { margin: 0; font-family: Arial, sans-serif; background: #f5f7fb; color: #1f2937; }
+    .wrap { max-width: 1200px; margin: 0 auto; padding: 1rem; }
+    .card { background: #fff; border: 1px solid #e5e7eb; border-radius: 12px; padding: 1rem; margin-bottom: 1rem; }
+    .row { display: flex; gap: 0.6rem; flex-wrap: wrap; align-items: center; }
+    .input { padding: 0.55rem; border: 1px solid #cbd5e1; border-radius: 8px; min-width: 180px; }
+    .btn { padding: 0.55rem 0.8rem; border: 1px solid #cbd5e1; border-radius: 8px; background: #fff; cursor: pointer; }
+    .btn.primary { background: #1a73e8; border-color: #1a73e8; color: #fff; }
+    .muted { color: #6b7280; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <h1>AmazonWorld Database Owner Console</h1>
+      <p class="muted">Standalone database panel. Keep this URL private.</p>
+    </div>
+
+    <div id="loginCard" class="card">
+      <h3>Owner Login</h3>
+      <p class="muted">Use this page via domain/server URL, not by opening file directly.</p>
+      <div class="row">
+        <input id="ownerEmail" class="input" type="email" placeholder="Owner email" />
+        <input id="ownerPassword" class="input" type="password" placeholder="Owner password" />
+        <button id="ownerLoginBtn" class="btn primary" type="button">Login</button>
+      </div>
+      <p id="loginMsg" class="muted" style="margin-top: 1rem; font-weight: bold;"></p>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('ownerLoginBtn').addEventListener('click', function() {
+        // 1. Grab the inputs
+        const email = document.getElementById('ownerEmail').value;
+        const password = document.getElementById('ownerPassword').value;
+        const loginMsg = document.getElementById('loginMsg');
+
+        // 2. Simple check to ensure fields aren't empty
+        if (email !== "" && password !== "") {
+            // Display success message
+            loginMsg.innerText = "Successfully logged in! Redirecting to Database View...";
+            loginMsg.style.color = "green";
+
+            // 3. Redirect to the new database-view.html page after a 1-second delay
+            setTimeout(() => {
+                window.location.href = "database-view.html"; 
+            }, 1000); 
+
+        } else {
+            // Display error if fields are blank
+            loginMsg.innerText = "Please enter your email and password.";
+            loginMsg.style.color = "red";
+        }
+    });
+  </script>
+</body>
+</html>

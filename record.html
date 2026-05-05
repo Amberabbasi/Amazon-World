@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AmazonWorld | Record</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body data-auth="required">
+  <header class="site-header">
+    <div class="topbar">
+      <div class="brand">Amazon<span>World</span></div>
+      <nav class="nav">
+        <a href="home.html">Home</a>
+        <a class="active" href="record.html">Record</a>
+        <a href="start.html">Start</a>
+        <a href="contact.html">Contact</a>
+        <a href="profile-dashboard.html">Profile</a>
+        <span class="badge">Cart: <span id="cartCount">0</span></span>
+        <button id="logoutBtn" class="btn small danger">Logout</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="panel">
+      <h1>Transaction Record</h1>
+      <p class="muted">All Buy/Sell actions are shown below.</p>
+      <div id="recordList" class="list" style="margin-top: 1rem;"></div>
+    </section>
+
+    <section class="panel">
+      <h2>Record Features</h2>
+      <div class="list">
+        <div class="list-item"><span>Order tracking snapshots</span><span class="badge">Enabled</span></div>
+        <div class="list-item"><span>Sell request history</span><span class="badge">Enabled</span></div>
+        <div class="list-item"><span>Quick export to screenshot/report</span><span class="badge">Ready</span></div>
+      </div>
+    </section>
+  </main>
+  <script src="js/app.js"></script>
+</body>
+</html>

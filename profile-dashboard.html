@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AmazonWorld | Profile Dashboard</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body data-auth="required">
+  <header class="site-header">
+    <div class="topbar">
+      <div class="brand">Amazon<span>World</span></div>
+      <nav class="nav">
+        <a href="home.html">Home</a>
+        <a href="record.html">Record</a>
+        <a href="start.html">Start</a>
+        <a href="contact.html">Contact</a>
+        <a class="active" href="profile-dashboard.html">Profile</a>
+        <span class="badge">Cart: <span id="cartCount">0</span></span>
+        <button id="logoutBtn" class="btn small danger">Logout</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <h1>Profile Dashboard</h1>
+      <p>Manage your wallet, security, support, and product activity from one page.</p>
+    </section>
+
+    <section class="panel">
+      <h2>Welcome, <span data-user-name></span></h2>
+      <div class="wallet-grid">
+        <div class="wallet-stat">
+          <span class="muted">Total Profit</span>
+          <strong id="profileProfit">USD 0.00</strong>
+        </div>
+        <div class="wallet-stat">
+          <span class="muted">Total Balance</span>
+          <strong id="profileBalance">USD 0.00</strong>
+        </div>
+        <div class="wallet-stat">
+          <span class="muted">Credit Score (Backend)</span>
+          <strong id="profileCreditScore">0</strong>
+        </div>
+      </div>
+      <div class="actions" style="margin-top: 0.8rem;">
+        <button class="btn primary" data-deposit-static="1">Deposit</button>
+        <button class="btn" data-withdraw-popup="1">Withdraw</button>
+        <button class="btn" data-panel-target="profileSecurityPanel">Edit Profile / Security</button>
+        <button class="btn" data-panel-target="supportPanel">Customer Service</button>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h3>Account Status Control</h3>
+      <div class="list" style="margin-top: 0.8rem;">
+        <div class="list-item">
+          <span>Current Account Status</span>
+          <strong id="accountStatusBadge">active</strong>
+        </div>
+      </div>
+      <p class="muted" style="margin-top: 0.6rem;">Status is managed from backend/database.</p>
+    </section>
+
+    <section id="depositPanel" class="panel profile-panel active-panel">
+      <h3>Deposit</h3>
+      <div class="list" style="margin-top: 0.8rem;">
+        <div class="list-item">
+          <span>Deposit Contact Number</span>
+          <strong>+92 300 1234567</strong>
+        </div>
+      </div>
+    </section>
+
+    <section id="withdrawPanel" class="panel profile-panel">
+      <h3>Withdraw</h3>
+      <p class="muted" style="margin-top: 0.8rem;">
+        Use the Withdraw button above to open popup for withdrawing funds.
+      </p>
+    </section>
+
+    <section id="profileSecurityPanel" class="panel profile-panel">
+      <h3>Edit Profile / Security</h3>
+      <form id="profileForm" class="form" style="margin-top: 0.8rem;">
+        <input id="displayNameInput" class="input" type="text" placeholder="Display name" />
+        <input id="emailInput" class="input" type="email" placeholder="Email address" />
+        <input id="passwordInput" class="input" type="password" placeholder="New password" />
+        <button class="btn primary" type="submit">Save Settings</button>
+      </form>
+    </section>
+
+    <section id="supportPanel" class="panel profile-panel">
+      <h3>Customer Service</h3>
+      <p class="muted">Choose a quick support action:</p>
+      <div class="actions" style="margin-top: 0.8rem;">
+        <button class="btn small" data-support-msg="I need help with my order status.">Order Help</button>
+        <button class="btn small" data-support-msg="I need assistance with my account.">Account Help</button>
+        <button class="btn small" data-support-msg="I want to ask about product quality.">Product Query</button>
+      </div>
+      <p id="supportResponse" class="notice" style="display: none;"></p>
+    </section>
+
+    <section class="panel">
+      <h3>Bought Products (<span id="boughtCount">0</span>)</h3>
+      <div id="boughtList" class="list" style="margin-top: 0.8rem;">
+        <p class="muted">No bought products yet.</p>
+      </div>
+    </section>
+  </main>
+
+  <div id="withdrawModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="withdrawTitle">
+    <div class="modal-content">
+      <div class="modal-head">
+        <h3 id="withdrawTitle">Withdraw Funds</h3>
+        <button class="btn small" id="closeWithdrawModal" type="button">Close</button>
+      </div>
+      <form id="withdrawPopupForm" class="form" style="margin-top: 0.8rem;">
+        <input id="withdrawPopupAmount" class="input" type="number" min="1" step="0.01" placeholder="Withdraw amount (USDT)" required />
+        <div id="cryptoFields" class="form">
+          <input id="cryptoAddress" class="input" type="text" placeholder="Withdrawal address" />
+          <input id="cryptoNetwork" class="input" type="text" value="USDT-TRC20" readonly />
+        </div>
+
+        <button class="btn primary" type="submit">Confirm Withdraw</button>
+      </form>
+    </div>
+  </div>
+  <script src="js/app.js"></script>
+</body>
+</html>
